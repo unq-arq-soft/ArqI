@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+entity Product {
+    *id
+    --
+    name
+    description
+    category
+}
+
+entity ProductOffer {
+    *id
+    *price
+    *stock
+    --
+    description
+}
+
+
+entity User {
+    *id
+    *email
+    --
+    name
+    lastname
+}
+
+entity SellingInfo {
+    *id
+    *type
+    --
+    name
+}
+
+entity Purchase {
+    *id
+    *status
+    *quantity
+}
+
+entity Pricing {
+    *id
+    *base_price
+    *shipping_price
+}
+
+User --> SellingInfo
+
+Product <|-- ProductOffer
+User <|-- ProductOffer
+
+Purchase --|> Pricing
+Purchase --|> ProductOffer
+
+<> diamond
+Purchase .. diamond
+diamond --"buyer" User
+diamond --"seller" User
+
+
+@enduml
