@@ -17,11 +17,11 @@ public class ProductService {
 
     @Transactional
     public Optional<Product> getProduct(Long productId) {
-
-        if (productId == 1) {
-            return Optional.of(new Product(1L, "test nomre", "test dscripcio"));
-        }
-
         return Optional.ofNullable(productDao.get(productId));
+    }
+
+    @Transactional
+    public void saveProduct(Product product) {
+        productDao.save(product);
     }
 }

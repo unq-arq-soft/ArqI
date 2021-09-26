@@ -3,9 +3,7 @@ package ar.edu.mercadogratis.app.model;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Getter
@@ -14,13 +12,12 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @AllArgsConstructor
-public class Product {
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+@Table(name="PRODUCT")
+public class Product extends BaseEntity {
 
     private String name;
     private String description;
+    private ProductCategory category;
 
     @Override
     public boolean equals(Object o) {

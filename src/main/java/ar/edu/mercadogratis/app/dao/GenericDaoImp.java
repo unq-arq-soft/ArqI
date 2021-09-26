@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 import ar.edu.mercadogratis.app.model.*;
 
 @Repository
-public abstract class GenericDaoImp<T> implements GenericDao<T> {
+public abstract class GenericDaoImp<T extends BaseEntity> implements GenericDao<T> {
 	
 	@Autowired
 	protected SessionFactory sessionFactory;
@@ -23,7 +23,7 @@ public abstract class GenericDaoImp<T> implements GenericDao<T> {
 
 	public Long save(T object) {
 		sessionFactory.getCurrentSession().save(object);
-		return (Long) ((BaseEntity) object).getId();
+		return object.getId();
 	}
 
 	public void update(T object) {
