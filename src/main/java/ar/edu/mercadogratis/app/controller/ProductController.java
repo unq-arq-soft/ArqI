@@ -6,6 +6,8 @@ import ar.edu.mercadogratis.app.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
@@ -22,5 +24,15 @@ public class ProductController {
     @PostMapping
     public void saveProduct(@RequestBody Product product) {
         productService.saveProduct(product);
+    }
+
+    @PutMapping
+    public void updateProduct(@RequestBody Product product) {
+        productService.updateProduct(product);
+    }
+
+    @GetMapping
+    public List<Product> listProducts() {
+        return productService.listProducts();
     }
 }

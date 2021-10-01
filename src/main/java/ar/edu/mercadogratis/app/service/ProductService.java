@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -23,5 +24,15 @@ public class ProductService {
     @Transactional
     public void saveProduct(Product product) {
         productDao.save(product);
+    }
+
+    @Transactional
+    public void updateProduct(Product product) {
+        productDao.update(product);
+    }
+
+    @Transactional
+    public List<Product> listProducts() {
+        return productDao.list();
     }
 }

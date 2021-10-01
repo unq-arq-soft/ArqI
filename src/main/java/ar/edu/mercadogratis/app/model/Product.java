@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
@@ -18,6 +19,8 @@ public class Product extends BaseEntity {
     private String name;
     private String description;
     private ProductCategory category;
+    private BigDecimal price;
+    private int stock;
 
     @Override
     public boolean equals(Object o) {
