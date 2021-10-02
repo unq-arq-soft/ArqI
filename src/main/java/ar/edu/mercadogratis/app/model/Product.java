@@ -12,6 +12,7 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@Builder
 @AllArgsConstructor
 @Table(name="PRODUCT")
 public class Product extends BaseEntity {
