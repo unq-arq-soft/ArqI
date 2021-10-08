@@ -22,8 +22,8 @@ public class ProductService {
     }
 
     @Transactional
-    public void saveProduct(Product product) {
-        productDao.save(product);
+    public Long saveProduct(Product product) {
+        return productDao.save(product);
     }
 
     @Transactional

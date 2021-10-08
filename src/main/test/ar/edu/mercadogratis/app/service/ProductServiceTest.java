@@ -54,12 +54,14 @@ public class ProductServiceTest {
     void testSaveProduct() {
         // given
         Product product = mock(Product.class);
+        when(productDao.save(eq(product))).thenReturn(2L);
 
         // when
-        productService.saveProduct(product);
+        Long result = productService.saveProduct(product);
 
         // then
         verify(productDao).save(eq(product));
+        assertThat(result).isEqualTo(2L);
     }
 
     @Test

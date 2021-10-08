@@ -4,6 +4,7 @@ import ar.edu.mercadogratis.app.model.Product;
 import ar.edu.mercadogratis.app.exceptions.NotFoundException;
 import ar.edu.mercadogratis.app.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,13 +23,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public void saveProduct(@RequestBody Product product) {
-        productService.saveProduct(product);
+    public ResponseEntity<Long> saveProduct(@RequestBody Product product) {
+        return ResponseEntity.ok(productService.saveProduct(product));
     }
 
     @PutMapping
-    public void updateProduct(@RequestBody Product product) {
+    public ResponseEntity<String> updateProduct(@RequestBody Product product) {
         productService.updateProduct(product);
+        return ResponseEntity.ok("ok");
     }
 
     @GetMapping
