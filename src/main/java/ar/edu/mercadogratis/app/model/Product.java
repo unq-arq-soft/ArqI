@@ -22,6 +22,7 @@ public class Product extends BaseEntity {
     private ProductCategory category;
     private BigDecimal price;
     private int stock;
+    private String seller;
 
     @Override
     public boolean equals(Object o) {
