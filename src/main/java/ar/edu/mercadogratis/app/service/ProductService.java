@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -17,11 +18,21 @@ public class ProductService {
 
     @Transactional
     public Optional<Product> getProduct(Long productId) {
-
-        if (productId == 1) {
-            return Optional.of(new Product(1L, "test nomre", "test dscripcio"));
-        }
-
         return Optional.ofNullable(productDao.get(productId));
+    }
+
+    @Transactional
+    public Long saveProduct(Product product) {
+        return productDao.save(product);
+    }
+
+    @Transactional
+    public void updateProduct(Product product) {
+        productDao.update(product);
+    }
+
+    @Transactional
+    public List<Product> listProducts() {
+        return productDao.list();
     }
 }
