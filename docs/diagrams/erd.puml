@@ -3,16 +3,10 @@
 
 entity Product {
     *id
-    --
-    name
-    description
-    category
-}
-
-entity ProductOffer {
-    *id
     *price
     *stock
+    name
+    category
     --
     description
 }
@@ -37,26 +31,15 @@ entity Purchase {
     *id
     *status
     *quantity
-}
-
-entity Pricing {
-    *id
-    *base_price
-    *shipping_price
+    *price
 }
 
 User --> SellingInfo
 
-Product <|-- ProductOffer
-User <|-- ProductOffer
+User <|-- Product : seller
 
-Purchase --|> Pricing
-Purchase --|> ProductOffer
+Purchase --|> Product
 
-<> diamond
-Purchase .. diamond
-diamond --"buyer" User
-diamond --"seller" User
-
+Purchase --|> User : buyer
 
 @enduml
