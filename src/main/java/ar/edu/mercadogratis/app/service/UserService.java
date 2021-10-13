@@ -1,7 +1,5 @@
 package ar.edu.mercadogratis.app.service;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -10,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.mercadogratis.app.dao.UserDaoImpl;
-import ar.edu.mercadogratis.app.model.Customer;
 import ar.edu.mercadogratis.app.model.Email;
 import ar.edu.mercadogratis.app.model.User;
+
 
 
 @Service("userService")
