@@ -9,16 +9,21 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.mercadogratis.app.model.Customer;
+import ar.edu.mercadogratis.app.model.User;
 
 @Repository
 @RequiredArgsConstructor
-public class CustomerDaoImpl extends GenericDaoImp<Customer>{
+public class UserDaoImpl extends GenericDaoImp<User>{
 
 	private final SessionFactory sessionFactory;
 	
 	@Override
-	protected Class<Customer> getDomainClass() {
-		return Customer.class;
+	protected Class<User> getDomainClass() {
+		return User.class;
+	}
+	public User getUser(String mail){
+		Session session = this.sessionFactory.getCurrentSession();
+		return (User) session.createQuery("from User where email = :mail").setParameter("mail", mail)
+				.uniqueResult();
 	}
 }
